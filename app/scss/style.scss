@@ -1,0 +1,297 @@
+@font-face {
+  font-family: "open_sansbold";
+  src: url("../fonts/opensans-bold-webfont.woff2") format("woff2"),
+    url("../fonts/opensans-bold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "open_sansitalic";
+  src: url("../fonts/opensans-italic-webfont.woff2") format("woff2"),
+    url("../fonts/opensans-italic-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "open_sansregular";
+  src: url("../fonts/opensans-regular-webfont.woff2") format("woff2"),
+    url("../fonts/opensans-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "FreestyleScript";
+  src: url("../fonts/FREESCPT.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+// контейнер по умолчанию. Отступ между колонками
+$colGups: 5px;
+
+// контрольные точки, на которых наш макет будет перестраиваться (могут меняться зависимости от дизайна)
+$breakpoints: (
+  xs: 0,
+  sm: 320px,
+  md: 533px,
+  lg: 768px,
+  xl: 1024px,
+  xxl: 1366px,
+  xxxl: 1680px,
+  xxxxl: 1920px
+);
+
+$columns: 12;
+
+@each $breakpoint in $breakpoints {
+  $name: nth($breakpoint, 1);
+  $size: nth($breakpoint, 2);
+
+  @media only screen and (min-width: $size) {
+    [class*="col-#{$name}"] {
+      box-sizing: border-box;
+      flex: 0 0 auto;
+      padding-right: $colGups;
+      padding-left: $colGups;
+    }
+    @for $i from 1 through $columns {
+      .col-#{$name}-#{$i} {
+        flex-basis: 100% / $columns * $i;
+        max-width: 100% / $columns * $i;
+      }
+    }
+    @for $i from 1 through $columns {
+      .col-#{$name}-offset-#{$i} {
+        margin-left: 100% / $columns * $i;
+      }
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+// variables
+$mainColor: #444;
+$mainBackground: #fff;
+
+//===========  mixins start ===========//
+
+// columns
+$columns: 12;
+$col: $columns;
+
+@mixin col($col, $columns) {
+  width: percentage($col/$columns);
+}
+
+//===========  mixins end ===========//
+
+@mixin col-create() {
+  @while $col > 0 {
+    .col-#{$col} {
+      @include col($col, $columns);
+    }
+
+    $col: $col - 1;
+  }
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+a {
+  color: inherit;
+}
+
+// layout
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+[class^="col"] {
+  // padding-left: $colGups;
+  // padding-right: $colGups;
+  width: 100%;
+  min-height: 1px;
+}
+
+html {
+  font-size: 16px;
+}
+
+@include col-create();
+
+.header {
+  position: fixed;
+  top: 0;
+  z-index: 5;
+  background-color: #fff;
+  width: 100%;
+
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__item {
+    font-size: 0.875rem;
+    font-family: "open_sansregular";
+    padding: 1.01em 0;
+  }
+
+  &__item + &__item {
+    padding-left: 2.14em;
+  }
+
+  &__logo {
+    margin-left: -2.14em;
+    padding: 0 140px;
+    &-m {
+      display: none;
+    }
+  }
+
+  .menu {
+    display: none;
+  }
+}
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  background-color: #5363d8;
+  background: url("../img/hero-bg.png") right/ cover no-repeat, #5363d8;
+  background-blend-mode: luminosity;
+  background-position: 66%;
+  display: flex;
+  align-items: center;
+  &:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: rgba(83, 99, 216, 0.8);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  &__wrapper {
+    z-index: 3;
+  }
+
+  &__wrapper-form {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 40px;
+  }
+
+  &__wrapper-text {
+    padding-left: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__form {
+    background-color: #fff;
+    padding: 2.5rem;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__form-title {
+    font-size: 1.625rem;
+    font-family: "open_sansbold";
+    color: #5363db;
+    padding-bottom: 1.08em;
+  }
+
+  input, select {
+    border: none;
+    background-color: #f2f2f2;
+    font-size: 0.875rem;
+    color: #888888;
+    margin-bottom: 1.36em;
+    font-family: "open_sansregular";
+    padding: 1.2em 0.65em;
+    border-radius: 10px;
+    outline: transparent;
+    border: 1px solid transparent;
+
+    &:hover, &:focus, &:active {
+      border: 1px solid #5363d8;
+    }
+  }
+
+  input[type=submit] {
+    margin: 0.625em 0 0;
+    font-size: 1rem;
+    font-family: "open_sansbold";
+    color: #fff;
+    background-color: #5363d8;
+    width: 72%;
+    align-self: flex-end;
+  }
+
+  ::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #888888;
+    font-size: 0.875rem;
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #888888;
+    font-size: 0.875rem;
+  }
+  
+  ::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #888888;
+    font-size: 0.875rem;
+  }
+
+  &__title {
+    color: #fff;
+    font-size: 3rem;
+    font-family: "open_sansbold";
+    line-height: 1.5;
+  }
+
+  &__description {
+    font-size: 2.5rem;
+    font-family: "FreestyleScript";
+    color: #fff;
+    line-height: 1.5;
+  }
+}
+
+
