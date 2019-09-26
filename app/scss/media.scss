@@ -94,7 +94,7 @@
     }
 
     &__item + &__item {
-      padding-left: 0;
+      margin-left: 0;
     }
 
     &__item {
@@ -124,6 +124,26 @@
         background-color: #5363d8;
         z-index: 10;
         margin: 5px 0;
+      }
+    }
+
+    &__item {
+      position: relative;
+  
+      &:focus,
+      &:hover {
+        color: #fff;
+      }
+  
+      &:focus:before ,
+      &:hover:before {
+        background-color:#fff;
+      }
+    }
+  
+    &__item:nth-of-type(4) {
+      &:hover:before {
+        content: none;
       }
     }
   }

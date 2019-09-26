@@ -92,14 +92,16 @@
               <input
                 type="text"
                 name="Name"
-                id="Name"
+                id="name"
                 placeholder="Enter your name"
+                pattern="[A-Za-z]{3,30}"
               />
               <input
                 type="tel"
                 name="phone"
                 id="phone"
                 placeholder="Enter your phone"
+                pattern="380[0-9]{9}"
               />
               <select name="class">
                 <option value="" selected disabled>Chose your class</option>

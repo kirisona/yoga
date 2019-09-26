@@ -162,14 +162,36 @@ html {
     font-size: 0.875rem;
     font-family: "open_sansregular";
     padding: 1.01em 0;
+    position: relative;
+
+    &:hover {
+      color: #5363db;
+    }
+
+    &:hover:before,
+    &:focus:before {
+      content: '';
+      width: 2.14em;
+      height: 1px;
+      background-color: #5363db;
+      position: absolute;
+      bottom: 0.5em;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  &__item:nth-of-type(4) {
+    &:hover:before {
+      content: none;
+    }
   }
 
   &__item + &__item {
-    padding-left: 2.14em;
+    margin-left: 2.14em;
   }
 
   &__logo {
-    margin-left: -2.14em;
     padding: 0 140px;
     &-m {
       display: none;
