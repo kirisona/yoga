@@ -79,6 +79,7 @@
     &__list {
       display: none;
       position: absolute;
+      
       flex-direction: column;
       text-align: center;
       z-index: 10;
@@ -87,6 +88,8 @@
       position: absolute;
       top: 0;
       right: 0;
+      justify-content: space-between;
+      align-content: space-between;
     }
 
     .active {
@@ -102,7 +105,7 @@
       font-family: "open_sansbold";
       color: #fff;
       padding: 0;
-      line-height: 2.5;
+      line-height: 3.5;
     }
 
     .menu {
@@ -110,7 +113,7 @@
       position: absolute;
       top: calc((100px / 2) - (45px / 2));
       right: 10px;
-      width: 45px;
+      width: 30px;
       border: none;
       background-color: #fff;
       outline: transparent;
@@ -119,11 +122,11 @@
 
       span {
         display: block;
-        height: 4px;
+        height: 2px;
         width: 100%;
         background-color: #5363d8;
         z-index: 10;
-        margin: 5px 0;
+        margin: 3px 0;
       }
     }
 
@@ -174,6 +177,15 @@
 
     &__wrapper-text {
       padding-left: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .reservation {
+    &__item {
+      flex-direction: column;
+      justify-content: space-between;
     }
   }
 }
