@@ -25,8 +25,17 @@ phone.oninvalid = function(event) {
   );
 };
 
-submitForm.addEventListener('click', function(event) {
-  event.preventDefault();
+submitForm.addEventListener("click", submiting);
 
-  alert("Thank you for your order. Our consultant will contact you within two hours.")
-})
+function submiting(event) {
+  // event.preventDefault();
+
+  if (name.oninvalid && phone.oninvalid) {
+    submitForm.removeEventListener("click", submiting);
+    alert('Sorry, try again.')
+  } else {
+    alert(
+      "Thank you for your order. Our consultant will contact you within two hours."
+    );
+  }
+}
