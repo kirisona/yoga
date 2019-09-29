@@ -79,7 +79,6 @@
     &__list {
       display: none;
       position: absolute;
-      
       flex-direction: column;
       text-align: center;
       z-index: 10;
@@ -186,6 +185,30 @@
     &__item {
       flex-direction: column;
       justify-content: space-between;
+    }
+  }
+
+}
+
+@media screen and (max-width: 400px) {
+  .about {
+    .slick-prev {
+      left: 0;
+      height: 2.5rem;
+      width: 2.5rem;
+    }
+  
+    .slick-prev:before {
+      content: url("../img/prev.png");
+      position: relative;
+      top: 3px;
+      right: 2px;
+    }
+  
+    .slick-next {
+      right: 0;
+      height: 2.5rem;
+      width: 2.5rem;
     }
   }
 }

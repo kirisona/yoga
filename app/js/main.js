@@ -39,3 +39,17 @@ function submiting(event) {
     );
   }
 }
+
+(function ($) {
+  "use strict";
+  $('.slider').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    dots: false,
+    arrows: true,
+    infinity: true,
+    autoplay: true,
+    speed: 1700
+});
+
+})(jQuery);
