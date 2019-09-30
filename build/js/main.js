@@ -4,6 +4,8 @@ const menuItems = document.querySelectorAll(".header__item");
 const submitForm = document.getElementById("submit");
 const name = document.getElementById("name");
 const phone = document.getElementById("phone");
+const buttons = document.querySelectorAll('.shop__btn');
+let shopTitle = document.querySelectorAll('.shop__title');
 
 menu.addEventListener("click", toggleMenu);
 
@@ -28,7 +30,7 @@ phone.oninvalid = function(event) {
 submitForm.addEventListener("click", submiting);
 
 function submiting(event) {
-  // event.preventDefault();
+  event.preventDefault();
 
   if (name.oninvalid && phone.oninvalid) {
     submitForm.removeEventListener("click", submiting);
@@ -38,6 +40,23 @@ function submiting(event) {
       "Thank you for your order. Our consultant will contact you within two hours."
     );
   }
+}
+
+for (let i = 0; i < buttons.length; i++) {
+  buttons[i].addEventListener('mouseover', function(event) {
+    for (j = 0; j < shopTitle.length; j++) {
+      if (i === j) {
+        shopTitle[j].style.backgroundColor = '#848dd6';
+      }
+    }
+  });
+  buttons[i].addEventListener('mouseout', function(event) {
+    for (j = 0; j < shopTitle.length; j++) {
+      if (i === j) {
+        shopTitle[j].style.backgroundColor = '#5b6ceb';
+      }
+    }
+  });
 }
 
 (function ($) {

@@ -129,12 +129,14 @@ a {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin-right: -$colGups;
+  margin-left: -$colGups;
 }
 
 [class^="col"] {
-  // padding-left: $colGups;
-  // padding-right: $colGups;
-  // width: 100%;
+  padding-left: $colGups;
+  padding-right: $colGups;
+  width: 100%;
   min-height: 1px;
 }
 
@@ -147,7 +149,7 @@ html {
 .header {
   position: fixed;
   top: 0;
-  z-index: 5;
+  z-index: 10;
   background-color: #fff;
   width: 100%;
 
@@ -393,6 +395,10 @@ html {
 }
 
 .gallery {
+
+  &__wrapper {
+    margin: 0;
+  }
   &__item {
     position: relative;
     padding: 0;
@@ -561,6 +567,142 @@ html {
   &__item:hover &__img {
     transform: rotateY(360deg);
     transition: 1.5s ease-in;
+  }
+}
+
+.shop-blog {
+  background-image: url('../img/lotos.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right;
+  padding: 6.25rem 0 8.75rem;
+}
+
+.shop {
+  &__wrapper {
+    margin: 0;
+    justify-content: space-between;
+  }
+
+  &__wrap-item {
+    padding: 10px 15px;
+  }
+
+  &__item {
+    padding: 0;
+    box-shadow: 0px 9px 50px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    font-size: 0;
+    overflow: hidden;
+    background-color: #fff;
+
+  }
+
+  &__title {
+    text-align: center;
+    font-family: "open_sansbold";
+    color: #fff;
+    background-color: #5363db;
+    font-size: 4.19rem;
+    padding: 0.75em;
+    margin-bottom: 0.37em;
+
+    &-currency {
+      font-size: 2rem;
+      vertical-align: middle;
+    }
+
+    &-month {
+      font-size: 1.125rem;
+      text-transform: uppercase;
+    }
+  }
+
+  &__about {
+    font-size: 1.125rem;
+    color: #555555;
+    line-height: 1.33;
+    position: relative;
+    padding: 1em 2em 1em 3.83em;
+    position: relative;
+  }
+
+  &__about:after {
+    content: '';
+    width: 6.188rem;
+    height: 1px;
+    background-color: #d7d7d7;
+    position: absolute;
+    bottom: 0;
+    left: 7.5em;
+  }
+
+  &__about:last-of-type:after {
+    content: none;
+  }
+
+  &__btn {
+    font-size: 1.125rem;
+    margin: 2.5em 0 2.78em;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.89em 2.67em;
+    background-color: #5b6ceb;
+    border: none;
+    border-radius: 20px;
+    outline: transparent;
+    color: #fff;
+    font-family: "open_sansbold";
+  }
+}
+
+.contact {
+  background-color: #5b6ceb;
+  padding: 6.25rem 0;
+  color: #fff;
+
+  &__title {
+    font-size: 18px;
+    font-family: "open_sansbold";
+    line-height: 1.22;
+    text-transform: uppercase;
+    padding-bottom: 2.94em;
+  }
+
+  &__text {
+    font-size: 14pxrem;
+    font-family: "open_sansregular";
+    line-height: 1.57;
+    padding-bottom: 4em;
+  }
+
+  &__social {
+    display: flex;
+  }
+
+  &__item + &__item {
+    padding-left: 15px;
+  }
+
+  &__contact {
+    display: flex;
+  }
+
+  &__contact + &__contact {
+    padding-top: 22px;
+  }
+
+  &__link {
+    padding-left: 15px;
+    font-size: 14px;
+    font-family: "open_sansregular";
+    line-height: 1.57;
+    vertical-align: middle;
+  }
+
+  &-row {
+    flex-direction: column;
   }
 }
 
