@@ -71,4 +71,22 @@ for (let i = 0; i < buttons.length; i++) {
     speed: 1700
 });
 
+
+$('.slider--big').slick({
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  dots: true,
+  arrows: false,
+  infinity: true,
+  asNavFor: '.slider-small'
+});
+
+$('.slider-small').slick({
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  dots: false,
+  arrows: true,
+  infinity: true,
+  asNavFor: '.slider--big'
+});
 })(jQuery);

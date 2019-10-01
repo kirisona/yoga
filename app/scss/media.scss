@@ -235,6 +235,15 @@
       justify-content: space-between;
     }
   }
+
+  .blog {
+    &__img {
+      margin-bottom: 15px;
+      &:after {
+        content: none;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 400px) {
